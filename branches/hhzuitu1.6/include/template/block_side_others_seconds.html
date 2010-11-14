@@ -1,0 +1,18 @@
+<!--{if $others_seconds}-->
+<div class="sbox side-business">
+	<div class="sbox-top"></div>
+	<div class="sbox-content">
+		<div class="tip">
+		<h2>今日秒杀...</h2>
+		<!--${$index=0}-->
+		<!--{loop $others_seconds $one}-->
+			<b>${++$index}、{$one['title']}&nbsp;<!--{if $one['begin_time'] > time()}-->(未开始)<!--{elseif $one['end_time'] < time()}-->(已结束)<!--{else}-->(进行中)<!--{/if}--></b>
+			<!--{if $one['image']}--><p><a href="/team.php?id={$one['id']}"><img src="${team_image($one['image'], true)}" width="195" border="0" /></a></p><!--{/if}-->
+			<p><a href="/team.php?id={$one['id']}">&raquo;&nbsp;点击参与本单秒杀</a></p>
+			</p>
+		<!--{/loop}-->
+		</div>
+	</div>
+	<div class="sbox-bottom"></div>
+</div>
+<!--{/if}-->

@@ -1,0 +1,91 @@
+<!--{include header}-->
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="content">
+    <form action="/team/buy.php?id={$team['id']}" method="post" class="validator">
+	<input id="deal-per-number" value="{$team['per_number']}" type="hidden" />
+    <div id="deal-buy" class="box">
+        <div class="box-top"></div>
+        <div class="box-content">
+            <div class="head"><h2>提交订单</h2></div>
+            <div class="sect">
+            <table class="order-table">
+                <tr>
+                    <th class="deal-buy-desc">项目名称</th>
+                    <th class="deal-buy-quantity">数量</th>
+                    <th class="deal-buy-multi"></th>
+                    <th class="deal-buy-price">价格</th>
+                    <th class="deal-buy-equal"></th>
+                    <th class="deal-buy-total">总价</th>
+                </tr>
+                <tr>
+                    <td class="deal-buy-desc">{$team['title']}</td>
+                    <td class="deal-buy-quantity"><input type="text" class="input-text f-input" maxlength="4" name="quantity" value="{$order['quantity']}" id="deal-buy-quantity-input" ${$team['per_number']==1?'readonly':''} /><br /><span style="font-size:12px;color:gray;"><!--{if $team['per_number']==0}-->最多9999件<!--{else}-->最多{$team['per_number']}件<!--{/if}--></span></td>
+                    <td class="deal-buy-multi">x</td>
+                    <td class="deal-buy-price"><span class="money">{$currency}</span><span id="deal-buy-price">{$team['team_price']}</span></td>
+                    <td class="deal-buy-equal">=</td>
+                    <td class="deal-buy-total"><span class="money">{$currency}</span><span id="deal-buy-total">{$order['quantity']*$team['team_price']}</span></td>
+                </tr>
+				<!--{if $team['delivery']=='express'}-->
+                <tr>
+                    <td class="deal-buy-desc">快递</td>
+                    <td class="deal-buy-quantity"></td>
+                    <td class="deal-buy-multi"></td>
+                    <td class="deal-buy-price"><span class="money">{$currency}</span><span id="deal-express-price">{$team['fare']}</span></td>
+                    <td class="deal-buy-equal">=</td>
+                    <td class="deal-buy-total"><span class="money">{$currency}</span><span id="deal-express-total">{$team['fare']}</span></td>
+                </tr>
+				<!--{/if}-->
+
+				<tr class="order-total">
+                    <td class="deal-buy-desc"><strong>订单总额：</strong></td>
+                    <td class="deal-buy-quantity"></td>
+                    <td class="deal-buy-multi"></td>
+                    <td class="deal-buy-price"></td>
+                    <td class="deal-buy-equal">=</td>
+                    <td class="deal-buy-total"><span class="money">{$currency}</span><strong id="deal-buy-total-t">{$order['origin']}</strong></td>
+                </tr>
+            </table>
+			<!--{if $team['delivery']=='express'}-->
+			<div class="expresstip">${nl2br(htmlspecialchars($team['express']))}</div>
+			<div class="wholetip clear"><h3>快递信息</h3></div>
+			<div class="field username">
+				<label>收件人</label>
+				<input type="text" size="30" name="realname" id="settings-realname" class="f-input" value="{$login_user['realname']}" require="true" datatype="require" />
+				<span class="hint">收件人请与有效证件姓名保持一致，便于收取物品</span>
+			</div>
+			<div class="field mobile">
+				<label>手机号码</label>
+				<input type="text" size="30" name="mobile" id="settings-mobile" class="number" value="{$login_user['mobile']}" require="true" datatype="mobile" maxLength="11" />
+				<span class="hint">手机号码是我们联系您最重要的方式，请准确填写</span>
+			</div>
+				<div class="field username">
+				<label>收件地址</label>
+				<input type="text" size="30" name="address" id="settings-address" class="f-input" value="{$login_user['address']}" require="true" datatype="require" />
+				<span class="hint">为了能及时收到物品，请按照格式填写：_省_市_县（区）_</span>
+			</div>
+			<div class="field mobile">
+				<label>邮政编码</label>
+				<input type="text" size="30" name="zipcode" id="settings-mobile" class="number" value="{$login_user['zipcode']}" require="true" datatype="zip" maxLength="6" />
+			</div>
+			<!--{/if}-->
+			<div class="field mobile">
+				<label>订单附言</label>
+				<textarea name="remark" style="width:500px;height:80px;padding:2px;">${htmlspecialchars($order['remark'])}</textarea>
+			</div>
+            <input id="deal-buy-cardcode" type="hidden" name="cardcode" maxlength="8" value="" />
+            <input type="hidden" name="id" value="{$order['id']}" />
+			<div class="form-submit"><input type="submit" class="formbutton" name="buy" value="确认无误，购买"/></div>
+            </div>
+        </div>
+        <div class="box-bottom"></div>
+    </div>
+    </form>
+</div>
+<div id="sidebar">
+	<!--{include block_side_credit}-->
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

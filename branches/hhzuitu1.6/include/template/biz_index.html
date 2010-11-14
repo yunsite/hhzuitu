@@ -1,0 +1,43 @@
+<!--{include biz_header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="coupons">
+    <div id="content" class="coupons-box clear mainwide">
+		<div class="box clear">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head">
+                    <h2>团购项目列表</h2>
+				</div>
+                <div class="sect">
+					<table id="orders-list" cellspacing="0" cellpadding="0" border="0" class="coupons-table">
+					<tr><th width="500">团购名称</th><th width="80">城市</th><th width="100">日期</th><th width="50">成交</th><th width="50">团购价</th><th width="40">审核</th><th width="80">操作</th></tr>
+					<!--{loop $teams $index $one}-->
+					<!--${$one['state'] = team_state($one)}-->
+					<tr ${$index%2?'':'class="alt"'} id="team-list-id-{$one['id']}">
+						<td style="text-align:left;"><a class="deal-title" href="/team.php?id={$one['id']}" target="_blank">{$one['title']}</a></td>
+						<td>{$cities[$one['city_id']]['name']}</td>
+						<td>${date('Y-m-d',$one['begin_time'])}<br/>${date('Y-m-d',$one['end_time'])}</td>
+						<td>{$one['now_number']}/{$one['min_number']}</td>
+						<td><span class="money">{$currency}</span>${moneyit($one['team_price'])}<br/><span class="money">{$currency}</span>${moneyit($one['market_price'])}</td>
+						<td><!--{if $one['audit']==1}-->是<!--{elseif $one['audit']==2}-->审核未通过<!--{else}-->否<!--{/if}--></td>
+						<td class="op" nowrap><a href="/ajax/partner.php?action=teamdetail&id={$one['id']}" class="ajaxlink">详情</a>｜<a href="/biz/coupon_edit.php?id={$one['id']}">编辑</a><!--{if team_state($one)=='success'}-->｜<a href="/biz/down.php?id={$one['id']}" target="_blank">下载</a><!--{/if}--></td>
+					</tr>
+					<!--{/loop}-->
+					<tr><td colspan="7">{$pagestring}</tr>
+                    </table>
+					<div class="main" style="float:right;">
+						如有疑问请<a href="/about/contact.php" target="_blank">联系{$INI['system']['abbreviation']}客服人员</a>！
+					</div>
+				</div>
+				
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->
