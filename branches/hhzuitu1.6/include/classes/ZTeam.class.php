@@ -17,6 +17,14 @@ class ZTeam
 		return Table::Delete('team', $id);
 	}
 
+	static public function AuditTeam($id, $aud) {
+		$table = new Table('team', $id);
+		Table::UpdateCache('team', $id, array(
+			'audit' => $aud,
+		));
+		return $table->Set('audit', $aud);
+	}
+
 	static public function BuyOne($order) {
 		$order = Table::FetchForce('order', $order['id']);
 		$team = Table::FetchForce('team', $order['team_id']);

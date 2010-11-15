@@ -43,7 +43,7 @@
 						<td nowrap>${date('Y-m-d',$one['begin_time'])}<br/>${date('Y-m-d',$one['end_time'])}</td>
 						<td nowrap>{$one['now_number']}/{$one['min_number']}</td>
 						<td nowrap><span class="money">{$currency}</span>${moneyit($one['team_price'])}<br/><span class="money">{$currency}</span>${moneyit($one['market_price'])}</td>
-						<td><!--{if $one['audit']==1}-->是<!--{elseif $one['audit']==2}-->审核未通过<!--{else}-->否<!--{/if}--></td>
+						<td><!--{if $one['audit']==1}--><a href="/ajax/manage.php?action=teamauditno&id={$one['id']}" class="ajaxlink" ask="确定取消审核吗？" >是</a><!--{elseif $one['audit']==2}--><a href="/ajax/manage.php?action=teamaudityes&id={$one['id']}" class="ajaxlink" ask="确定审核通过吗？" >审核未通过</a><!--{else}--><a href="/ajax/manage.php?action=teamaudityes&id={$one['id']}" class="ajaxlink" ask="确定审核通过吗？" >否</a><!--{/if}--></td>
 						<td class="op" nowrap><a href="/ajax/manage.php?action=teamdetail&id={$one['id']}" class="ajaxlink">详情</a>｜<a href="/manage/team/edit.php?id={$one['id']}">编辑</a>｜<a href="/ajax/manage.php?action=teamremove&id={$one['id']}" class="ajaxlink" ask="确定删除本项目吗？" >删除</a><!--{if $one['close_time']&&in_array($one['state'],array('success','soldout'))}-->｜<a href="/manage/team/down.php?id={$one['id']}" target="_blank">下载</a><!--{/if}--></td>
 					</tr>
 					<!--{/loop}-->
