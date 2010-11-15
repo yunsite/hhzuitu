@@ -459,3 +459,19 @@ elseif ( 'cacheclear' == $action ) {
 	}
 	json("操作成功，清空缓存文件{$clear}个，未清空{$unclear}个", 'alert');
 }
+elseif ('teamauditno' == $action) {
+	need_auth('team');
+	$team = Table::Fetch('team', $id);
+	ZTeam::AuditTeam($id, 0);
+
+	Session::Set('notice', "团购 {$id} 取消审核成功！");
+	json(null, 'refresh');
+}
+elseif ('teamaudityes' == $action) {
+	need_auth('team');
+	$team = Table::Fetch('team', $id);
+	ZTeam::AuditTeam($id, 1);
+
+	Session::Set('notice', "团购 {$id} 审核成功！");
+	json(null, 'refresh');
+}
