@@ -16,7 +16,7 @@
 				</div>
                 <div class="sect">
 					<table id="orders-list" cellspacing="0" cellpadding="0" border="0" class="coupons-table">
-					<tr><th width="40">ID</th><th width="320">名称</th><th width="60">分类</th><th width="120">联系人</th><th width="130">电话号码</th><th width="60">商户秀</th><th width="120">操作</th></tr>
+					<tr><th width="40">ID</th><th width="320">名称</th><th width="60">分类</th><th width="120">联系人</th><th width="130">电话号码</th><th width="60">商户秀</th><th width="70">已认证</th><th width="120">操作</th></tr>
 					<!--{loop $partners $index $one}-->
 					<tr ${$index%2?'':'class="alt"'} id="team-list-id-{$one['id']}">
 						<td>{$one['id']}</td>
@@ -25,6 +25,7 @@
 						<td nowrap>{$one['contact']}</td>
 						<td nowrap>{$one['phone']}<br/>{$one['mobile']}</td>
 						<td nowrap>{$one['open']}</td>
+						<td nowrap><!--{if $one['authenticate']==1}--><a href="/ajax/manage.php?action=partnerauthenticateyes&id={$one['id']}" class="ajaxlink">是</a><!--{else}--><a href="/ajax/manage.php?action=partnerauthenticateyes&id={$one['id']}" class="ajaxlink">否</a><!--{/if}--></td>
 						<td class="op" nowrap><a href="/manage/partner/edit.php?id={$one['id']}">编辑</a>｜<a href="/ajax/manage.php?action=partnerhead&id={$one['id']}" class="ajaxlink">置顶</a>｜<a href="/ajax/manage.php?action=partnerremove&id={$one['id']}" class="ajaxlink" ask="确定删除本商户？">删除</a></td>
 					</tr>
 					<!--{/loop}-->

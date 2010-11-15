@@ -271,6 +271,7 @@ CREATE TABLE `partner` (
   `head` int(10) unsigned NOT NULL default '0',
   `user_id` int(10) unsigned NOT NULL default '0',
   `create_time` int(10) unsigned NOT NULL default '0',
+  `authenticate` int(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `UNQ_ct` (`city_id`,`title`),
   UNIQUE KEY `UNQ_u` (`username`)

@@ -475,3 +475,11 @@ elseif ('teamaudityes' == $action) {
 	Session::Set('notice', "团购 {$id} 审核成功！");
 	json(null, 'refresh');
 }
+elseif ('partnerauthenticateyes' == $action) {
+	$partner = Table::Fetch('partner', $id);
+	$auth = ($partner['authenticate']==0) ? 1 : 0;
+	Table::UpdateCache('partner', $id, array( 'authenticate' => $auth,));
+	$tip = $auth ? '设置商户认证成功' : '取消商户认证成功';
+	Session::Set('notice', $tip);
+	json(null, 'refresh');
+}
