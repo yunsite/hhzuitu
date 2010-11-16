@@ -41,7 +41,9 @@ foreach($teams AS $id=>$one){
 	/* progress bar size */
 	$one['bar_size'] = ceil(190*($one['now_number']/$one['min_number']));
 	$one['bar_offset'] = ceil(5*($one['now_number']/$one['min_number']));
-
+	
+	$partner = Table::Fetch('partner', $one['partner_id']);
+	$one['authenticate'] = $partner['authenticate'];
 	$teams[$id] = $one;
 }
 

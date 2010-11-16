@@ -75,7 +75,7 @@ body.newbie{}
 #hdw{height:157px;background:url(i/bg-hd.gif) repeat-x 0 0;}
 #bdw{min-height:500px;_height:500px;}
 #ftw{background:url(i/bg-ft.gif) repeat-x 0 0;height:345px;}
-#hd{position:relative;z-index:2;width:960px;margin:0 auto;}
+#hd{background:url(i/head_content.jpg) no-repeat;height:110px;position:relative;z-index:2;width:960px;margin:0 auto;}
 #hd .subscribe{position:absolute;top:35px;right:0;width:275px;}
 #hd .subscribe .text{display:block;padding:0 0 5px 5px;color:#999;font-size:12px;}
 #hd .subscribe .f-text{float:left;width:179px;padding-left:4px;color:#999;font-size:12px;border:1px solid #999;}
@@ -477,7 +477,8 @@ dd#bd{position:relative;z-index:1;width:960px;margin:0 auto;padding:30px 0 65px;
 #deal-intro .main{float:left;width:215px;margin-right:15px;_margin-right:10px;_display:inline;font-family:Helvetica,arial,sans-serif;}
 #deal-intro .side{float:left;width:440px;margin-right:0;}
 #deal-intro .side .deal-buy-cover-img img{width:440px;}
-#deal-intro .side .digest{margin-top:28px;margin-left:10px;padding-left:40px;padding-right:35px;background:url(i/bg-deal-voice-quote.png) no-repeat 0 0;color:#666;}
+#deal-intro .side .digest{margin-top:14px;margin-left:10px;padding-left:40px;padding-right:35px;background:url(i/bg-deal-voice-quote.png) no-repeat 0 0;color:#666;}
+#deal-intro .side .auth{margin-top:14px;}
 #deal-intro h1{padding:0 50px 20px;font-size:30px;line-height:1.2;color: black;font-family: 微软雅黑, 黑体;font-size: 28px;line-height: 34px;text-shadow: #999 1px 1px 1px;}
 #deal-intro h1 span{font-family:arial,sans-serif;}
 #deal-intro .deal-buy{position:relative;}
@@ -917,7 +918,7 @@ a.sms { cursor:pointer; font-size:12px; color:#FF4E00}
 #info_a strong { color:#CC3333; font-size:20px; }
 
 /* teambuy express */
-div.expresstip { margin:0px 10px;background-color:#ECECEC;padding:5px; }
+div.expresstip { margin:0px 10px;background-color:#EFF8FF;padding:5px; }
 
 .l{float: left;}
 #ads_word {background: url(i/advice_team.png) no-repeat 0px 0px;display: block;height: 33px;position: absolute;left: -15px;top: 20px;height:156px;width:50px;z-index: 1001;}

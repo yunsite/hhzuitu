@@ -123,6 +123,12 @@ class Output
 		die( $xml );
 	}
 
+	static public function XmlSoSo($data, $parentTag=null) {
+		$xml = "<?xml version=\"1.0\" encoding=\"gbk\"?>\n";
+		$xml .= self::ArrayToXml( $data, 0, 'sdd' );
+		die( $xml );
+	}
+
 	static public function Flag($string=null, $flag='+')
 	{
 		$flag = substr( $flag, 0, 1 );
