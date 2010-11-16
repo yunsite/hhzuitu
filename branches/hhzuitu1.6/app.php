@@ -30,6 +30,9 @@ $login_partner = Table::Fetch('partner', $partner_id);
 $city = cookie_city(null);
 $hotcities = Table::Fetch('category', $INI['hotcity']);
 
+$sql = "SELECT sum(now_number*(market_price-team_price)) AS tsm FROM `team`";
+$totalSavedMoney = DB::GetQueryResult($sql);
+
 /* not allow access app.php */
 if($_SERVER['SCRIPT_FILENAME']==__FILE__){
 	Utility::Redirect( WEB_ROOT . '/index.php');
