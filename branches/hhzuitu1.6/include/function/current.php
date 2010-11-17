@@ -139,11 +139,13 @@ function current_about($selector='us') {
 	global $INI;
 	$a = array(
 		'/about/us.php' => '关于' . $INI['system']['abbreviation'],
+		'/about/fentuan.php' => '分团说明',
 		'/about/contact.php' => '联系方式',
 		'/about/job.php' => '工作机会',
 		'/about/terms.php' => '买家协议',
 		'/about/bizs.php' => '商户协议',
 		'/about/privacy.php' => '隐私声明',
+		
 	);
 	$l = "/about/{$selector}.php";
 	return current_link($l, $a, true);
