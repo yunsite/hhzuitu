@@ -15,6 +15,7 @@ $pages = array(
 	'about_terms' => '用户协议',
 	'about_privacy' => '隐私声明',
 	'about_bizs' => '商户协议',
+	'about_fentuan' => '分团说明',
 );
 
 $id = strval($_GET['id']);

@@ -211,7 +211,7 @@ dd#bd{position:relative;z-index:1;width:960px;margin:0 auto;padding:30px 0 65px;
 #content div.success h2,#content div.error h2{font-size:28px;font-family:'黑体',helvetica,arial,sans-serif;}
 #content .title{padding:0 10px;}
 #content .title h3{display:inline;padding-left:10px;font-size:1.5em;}
-#content .sect{width:678px;padding:20px 10px 50px;border-top:1px solid #def;}
+#content .sect{width:672px;padding:20px 10px 50px;border-top:1px solid #def;}
 #content.mainwide .sect{width:920px;padding:20px 10px 50px;border-top:1px solid #def;}
 #content .field{clear:left;float:left;*float:none;_display:inline;width:650px;padding:0 10px 2px;margin:5px auto 10px;}
 #content.mainwide .field{clear:left;float:left;*float:none;_display:inline;width:892px;padding:0 10px 2px;margin:5px auto 10px;}
