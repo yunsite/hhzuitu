@@ -33,6 +33,14 @@ $hotcities = Table::Fetch('category', $INI['hotcity']);
 $sql = "SELECT sum(now_number*(market_price-team_price)) AS tsm FROM `team`";
 $totalSavedMoney = DB::GetQueryResult($sql);
 
+/* get team count */
+$daytime = strtotime(date('Y-m-d'));
+$condition = array(
+	'team_type' => 'normal',
+	"audit" => 1, //所有已审核的团购
+);
+$allteamcount = Table::Count('team', $condition);
+
 /* not allow access app.php */
 if($_SERVER['SCRIPT_FILENAME']==__FILE__){
 	Utility::Redirect( WEB_ROOT . '/index.php');

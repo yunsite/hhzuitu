@@ -3,7 +3,8 @@ function current_frontend() {
 	global $INI;
 	$a = array(
 			'/index.php' => '首页',
-			'/team/index.php' => '团购总览',
+			'/team/current_list.php' => '团购列表',
+			'/team/index.php' => '往期团购',
 			);
 	if(option_yes('navseconds')) $a['/team/seconds.php'] = '秒杀抢团';
 	if(option_yes('navgoods')) $a['/team/goods.php'] = '热销商品';
