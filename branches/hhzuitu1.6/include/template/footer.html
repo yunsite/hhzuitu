@@ -50,7 +50,15 @@
 					<div class="logo-footer">
 						<a href="/"><img src="/static/css/i/logo-footer.gif" height="52px" width="246px"/></a>
 					</div>
-					<div class="tot_board"><p>截止到今天{$INI['system']['abbreviation']}共为用户节省</p><p class="total">{$currency}${moneyit($totalSavedMoney['tsm'])}</p></div>
+					<div class="tot_board">
+						<div style="width:40px; float:left;border-right-width: 1px;border-right-style: dashed;border-right-color: #373536;padding: 0px 10px 0px 0px;">
+							<p><b>目前</b><br><br></p>
+						</div>
+						<div>
+							<p class="total" style="float:right;">{$currency}${moneyit($totalSavedMoney['tsm'])}</p><p>共节省金额: </p>
+							<p class="total" style="float:right;">{$allteamcount}</p><p>共组织团购次数: </p>
+						</div>
+					</div>
 			</li>
 		</ul>
 		<div class="copyright">
@@ -67,6 +75,11 @@
 			<a href="http://www.ttturn.com" target="_blank"><img src="/static/img/links/tuantuanzhuan.png" height="31px" border="0" alt="团购导航-中国团购在线，可信赖的团购网站导航大全-团团转(TTturn.com)"></a>
 			<a href="http://www.letyo.com" target="_blank"><img src="http://bangimg.oobang.com/tuan123/letyo2.gif" height="31px" style="border:0 none"></a>
 			<a href="http://www.tuan138.com" target="_blank" title="团购导航"><img src="http://www.tuan138.com/images/logo_m.gif" height="31px" alt="团138团购导航"></a>
+			<a href="http://www.tuan2tuan.com" target="_blank" title="团啊团"><img src="/static/img/links/tuanatuan.png" height="31px" alt="团啊团"></a>
+			<a href="http://123.sogou.com/" target="_blank" title="搜狗"><img src="/static/img/links/sosodaohang.gif" height="31px" alt="搜狗"></a>
+			<a href="http://tuangou.xungou.com/" target="_blank" title="迅购"><img src="/static/img/links/xungou.gif" height="31px" alt="迅购"></a>
+			<a href="http://www.bootuan.net" target="_blank" title="播团网"><img src="/static/img/links/botuan.gif" height="31px" alt="播团网"></a>
+			<a href="http://www.tuanyiqi.com" target="_blank" title="团一起"><img src="http://www.tuanyiqi.com/img/common/logo.gif" height="31px" alt="团一起"></a>			
 		</div>
 		</div>
 		<script type="text/javascript">

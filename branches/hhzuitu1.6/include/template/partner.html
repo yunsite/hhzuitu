@@ -6,11 +6,17 @@
 	<div id="deal-default">
 		<div id="content">
 			<div id="deal-intro" class="cf">
-                <h1 style="padding-left:0;">商户：{$partner['title']}</h1>
-                <div class="main">
-					<div class="other">{$partner['other']}</div>
+				<div class="parnter_title">
+					<h1>商户：{$partner['title']}</h1>
+				</div>
+                <div class="main">					
 					<div class="other" style="margin-top:5px;">
+					<!--{if $partner['phone']}-->
 						<p><b>电话</b>：{$partner['phone']}</p>
+					<!--{/if}-->
+					<!--{if $partner['mobile']}-->
+						<p><b>移动电话</b>：{$partner['mobile']}</p>
+					<!--{/if}-->
 						<p><b>地址</b>：{$partner['address']}</p>
 					<!--{if $partner['homepage']}-->
 						<p><b>网址</b>：<a href="{$partner['homepage']}" target="_blank">${domainit($partner['homepage'])}</a></p>
@@ -50,6 +56,8 @@
 							<img src="${team_image($partner['image'])}" width="440" height="280" />
 						<!--{/if}-->
 					</div>
+					<div class="auth"><!--{if $team['authenticate']==1}--><img border="0" src="/static/css/i/biz-authenticate.png"><!--{/if}--></div>
+                    <div class="other">{$partner['other']}</div>
                 </div>
             </div>
             <div id="recent-deals" class="cf" style="margin-top:15px;">

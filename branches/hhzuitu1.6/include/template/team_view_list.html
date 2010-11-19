@@ -22,7 +22,9 @@
 		<div class="content">
 			<div class="cityimg"><img src="/static/css/i/area/{$city['ename']}.png"></div>
 			<div id="deal-intro" class="cf">
-                <h1><!--{if $team['close_time']==0}--><a class="deal-today-link" href="/team.php?id={$team['id']}">今日第${$index+1}团：</a><!--{/if}--><a href="/team.php?id={$team['id']}" title="{$team['title']}" style="color:black;">{$team['title']}</a></h1>
+				<div class="conleft_title">
+					<h1><!--{if $team['close_time']==0}--><a class="deal-today-link" href="/team.php?id={$team['id']}">今日第${$index+1}团：</a><!--{/if}--><a href="/team.php?id={$team['id']}" title="{$team['title']}" style="color:black;">{$team['title']}</a></h1>
+				</div>
                 <div class="main">
                     <div class="deal-buy">
                         <div class="deal-price-tag"></div>
