@@ -31,11 +31,13 @@ foreach($teams AS $id=>$one){
 	team_state($one);
 	if (!$one['close_time']) $one['picclass'] = 'isopen';
 	if ($one['state']=='soldout') $one['picclass'] = 'soldout';
+	$partner = Table::Fetch('partner', $one['partner_id']);
+	$one['authenticate'] = $partner['authenticate'];
 	$teams[$id] = $one;
 }
 
 $category = Table::Fetch('category', $group_id);
-$pagetitle = '团购总览';
+$pagetitle = '往期团购';
 include template('team_index');
 
 function current_teamcategory($gid='0') {

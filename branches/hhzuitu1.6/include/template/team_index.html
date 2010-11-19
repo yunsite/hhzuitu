@@ -17,7 +17,9 @@
 					<ul class="list">
 					<!--{loop $teams $index $one}-->
 						<li>
-							<div class="time">${date('Y-n-j', $one['begin_time'])}<br>到<br>${date('Y-n-j', $one['end_time'])}<br>结束
+							<div class="time">
+								${date('Y-n-j', $one['begin_time'])}<br>到<br>${date('Y-n-j', $one['end_time'])}<br>结束
+								<div class="auth"><!--{if $one['authenticate']==1}--><img border="0" src="/static/css/i/biz-authenticate-small.png"><!--{/if}--></div>
 							</div>
 							<div class="photo">
 								<div class="{$one['picclass']}"></div>
@@ -35,7 +37,8 @@
 								</p>
 								<span id="info_a">
 								单品节省：<strong class="cr"><span class="money">{$currency}</span>${moneyit($one['market_price']-$one['team_price'])}</strong>&nbsp;&nbsp;
-								共为用户节省:<strong class="count">{$currency}${moneyit($one['now_number']*($one['market_price']-$one['team_price']))}</strong></span>
+								共节省:<strong class="count">{$currency}${moneyit($one['now_number']*($one['market_price']-$one['team_price']))}</strong></span>
+								
 							</div>
 							
 						</li>

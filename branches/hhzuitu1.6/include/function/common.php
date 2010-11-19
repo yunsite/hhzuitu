@@ -685,4 +685,6 @@ function error_handler($errno, $errstr, $errfile, $errline) {
 	}
 	return true;
 }
+
+
 set_error_handler('error_handler');
