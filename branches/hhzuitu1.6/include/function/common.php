@@ -434,8 +434,11 @@ function RecursiveMkdir($path) {
 }
 
 function upload_image($input, $image=null, $type='team', $scale=false) {
-	$year = date('Y'); $day = date('md'); $n = time().rand(1000,9999).'.jpg';
+	$year = date('Y'); $day = date('md'); 
+	$n = time().rand(1000,9999).'.jpg';
 	$z = $_FILES[$input];
+	$filename = $z["tmp_name"];
+    $image_size = getimagesize($filename);
 	if ($z && strpos($z['type'], 'image')===0 && $z['error']==0) {
 		if (!$image) { 
 			RecursiveMkdir( IMG_ROOT . '/' . "{$type}/{$year}/{$day}" );
@@ -450,6 +453,7 @@ function upload_image($input, $image=null, $type='team', $scale=false) {
 		} 
 		else if($type=='team') {
 			move_uploaded_file($z['tmp_name'], $path);
+			mark_image($image_size, $path, IMG_ROOT .'/logo.png');
 		}
 		if($type=='team' && $scale) {
 			$npath = preg_replace('#(\d+)\.(\w+)$#', "\\1_index.\\2", $path); 
@@ -459,6 +463,65 @@ function upload_image($input, $image=null, $type='team', $scale=false) {
 	} 
 	return $image;
 }
+
+function mark_image($image_size, $path, $markimgpath) {
+	$iinfo = getimagesize($path,$iinfo);
+	$nimage = imagecreatetruecolor($image_size[0], $image_size[1]);
+	$white=imagecolorallocate($nimage,255,255,255);
+	$black = imagecolorallocate($nimage,0,0,0);
+	$red=imagecolorallocate($nimage,255,0,0);
+	imagefill($nimage,0,0,$white);
+	switch ($iinfo[2])
+	{ 
+		case 1:
+		$simage = imagecreatefromgif($path);
+		break;
+
+		case 2:
+		$simage = imagecreatefromjpeg($path);
+		break;
+
+		case 3:
+		$simage = imagecreatefrompng($path);
+		break;
+
+		case 6:
+		$simage = imagecreatefromwbmp($path);
+		break;
+
+		default:
+		die("不支持的文件类型");
+		exit;
+	 }
+	 
+	 imagecopy($nimage,$simage,0,0,0,0,$image_size[0],$image_size[1]);
+	$simage1 = imagecreatefrompng($markimgpath);
+	imagecopy($nimage,$simage1,40,40,0,0,263,58);
+	imagedestroy($simage1);
+	switch ($iinfo[2])
+	{ 
+		case 1:
+		//imagegif($nimage, $destination);
+		imagejpeg($nimage, $path);
+		break;
+
+		case 2:
+		imagejpeg($nimage, $path);
+		break;
+
+		case 3:
+		imagepng($nimage, $path);
+		break;
+
+		case 6:
+		imagewbmp($nimage, $path);
+		//imagejpeg($nimage, $destination);
+		break;
+	 }
+	imagedestroy($nimage);
+	imagedestroy($simage);
+}
+
 
 function user_image($image=null) {
 	global $INI;
