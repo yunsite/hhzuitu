@@ -22,7 +22,7 @@ function uploadfile($inputname)
 	$attachdir='upload';//上传文件保存路径，结尾不要带/
 	$dirtype=1;//1:按天存入目录 2:按月存入目录 3:按扩展名存目录  建议使用按天存
 	$maxattachsize=2097152;//最大上传大小，默认是2M
-	$upext='txt,rar,zip,jpg,jpeg,gif,png,swf,wmv,avi,wma,mp3,mid';//上传扩展名
+	$upext='jpg,jpeg,gif,png';//上传扩展名
 	$msgtype=2;//返回上传参数的格式：1，只返回url，2，返回参数数组
 	
 	$err = "";
@@ -80,9 +80,13 @@ function uploadfile($inputname)
 				if ( is_resource($upfile['tmp_name']) ) {
 					$data = fread($upfile['tmp_name'], $filesize);
 					file_put_contents($target, $data);
+					$image_size = getimagesize($target);
+					mark_image($image_size, $target, IMG_ROOT .'/logo.png');
 					fclose($upfile['tmp_name']);
 				} else {
 					move_uploaded_file($upfile['tmp_name'],$target);
+					$image_size = getimagesize($target);
+					mark_image($image_size, $target, IMG_ROOT .'/logo.png');
 					@unlink($upfile['tmp_name']);
 				}
 				$target = $INI['system']['imgprefix']."/static/team/{$year}/{$day}/{$fname}";
